@@ -1,4 +1,6 @@
 <%@page import="java.util.*"%>
+<%@page import="java.util.Collections"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%--
@@ -8,36 +10,39 @@
        난수 생성은 Random객체든, Math.random()이든 상관 없습니다.
    --%>
 
+<% 
+	List<Integer> n = new ArrayList<> ();
+	Random r1 = new Random();
+	
+	while(n.size() < 6){ // 이게 핵심 중복 제거 논리 
+		
+		int temp_num = (r1.nextInt(45) + 1);
+		
+		if (!n.contains(temp_num))  {
+			
+			n.add(temp_num);
+		}
+	}
+	Collections.sort(n);
+	%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quiz1</title>
+<title>Insert title here</title>
 </head>
 <body>
 
 	<h2>로또 번호 생성 결과!</h2>
 	<br>
 	<h3>이번주 로또 번호는 이 번호다!</h3>
-
-
-	<%HashSet<Integer> set = new HashSet<Integer>(); %>
-	<% for(int i = 0; i<6; i++) {
-    	Random r1 = new Random();  
-		set.add(r1.nextInt(45) + 1);
+	
+	번호 : 
+	<% for (int i = 0; i < n.size(); i++) {
+		out.print(n.get(i) + " ");
 		
-    }
-    Iterator iter = set.iterator();
-    if (set.size() == 6) {
-    while( iter.hasNext()){
-//    	System.out.println(iter.next() + " ");
-    	out.print(iter.next() + " ");
-    }
-    }
-    else{
-    out.print("값이 6개가 아니라 출력하지 못했습니다.");
-    }
-
-%>
+	}
+	%>
 </body>
 </html>
