@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+    <%!
+    // declaration
+    
+    public int i;
+    %>
+    
+    <%
+    // Scriptlet
+    
+    int j;
+    // 선언할 때 public을 사용하면 에러가 남 즉, scriptlet에서는 접근제한자를 사용할 수 없음 
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Declaration</title>
+</head>
+<body>
+
+</body>
+</html>

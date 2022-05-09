@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+    <%!
+    // declaration
+    
+    public int i;
+    
+    public int add(int n1, int n2){
+    	return n1 + n2;
+    }
+    // declaration은 접근제한자와 메소드 선언도 가능함 
+    %>
+    
+    <%
+    // Scriptlet
+    
+    int j = 1;
+    // 선언할 때 public을 사용하면 에러가 남 즉, scriptlet에서는 접근제한자를 사용할 수 없음
+    
+    /* void hello() {
+    	//out.print("안녕~");
+     }
+     Scriptlet은 접근제한자를 사용할 수 없고 메소드 선언도 불가능 */
+    
+    i++;
+    j++;
+    
+    // Scriptlet은 메서드 블록으로 가고 Declaration은 클래스 블록으로 가기 때문에 차이가 남
+    %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Declaration</title>
+</head>
+<body>
+
+</body>
+</html>

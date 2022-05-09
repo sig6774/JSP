@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Comments</title>
+</head>
+<body>
+
+<%
+	// Scriptlet 내부에서 자바 주석을 사용 가능
+	
+	/*
+	여러줄 주석도 가눙~
+	*/
+%>
+
+<!-- 요것은 HTML 주석으로 이것도 당연히 가능  -->
+여기는 주석 아님!
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    
+    <!-- html형식은 다른 곳에도 있을 것이므로 지움 -->
+    <%! int visit; %>
