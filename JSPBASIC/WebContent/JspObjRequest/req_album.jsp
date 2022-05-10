@@ -36,12 +36,12 @@ th, td {
 				</tr>
 			</thead>
 			<tbody>
-			
-			
+
+
 				<tr>
 					<td><input type="radio" name="title1" value="1"></td>
 					<td><img alt="s" src="kim.PNG" width="350px" height="200px">
-					
+
 					</td>
 					<td>김용명</td>
 					<td>루피</td>

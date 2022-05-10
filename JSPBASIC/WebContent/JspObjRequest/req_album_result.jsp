@@ -23,7 +23,7 @@ String birth = request.getParameter("birth");
 		if (title1.equals("1")) {
 	%>
 	<iframe width="560" height="315"
-		src="https://www.youtube.com/embed/m3moJifwVLQ"
+		src="https://www.youtube.com/embed/m3moJifwVLQ?autoplay=1"
 		title="YouTube video player" frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 		allowfullscreen></iframe>
@@ -32,7 +32,7 @@ String birth = request.getParameter("birth");
 	%>
 
 	<iframe width="560" height="315"
-		src="https://www.youtube.com/embed/AuRs80djfto"
+		src="https://www.youtube.com/embed/AuRs80djfto?autoplay=1"
 		title="YouTube video player" frameborder="0"
 		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 		allowfullscreen></iframe>
