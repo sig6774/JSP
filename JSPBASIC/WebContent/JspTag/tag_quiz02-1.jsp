@@ -1,49 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.*"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
     <%!
        List<String> party = new ArrayList<>();
        //사진 파일명이 인덱스 번호로 되어 있기 때문에
        //따로 인덱스 번호만 모아놓은 리스트를 하나 더 생성하겠습니다.
        List<Integer> jobNumber = new ArrayList<>();
    		Random r = new Random();
+        String[] jobs = {"전사", "도적", "사냥꾼", "마법사", "사제"};
+
     %>
     
-    <%
-       String[] jobs = {"전사", "도적", "사냥꾼", "마법사", "사제"};
-
-    		int num = r.nextInt(5); 
-    		// jobs에서 뽑을 랜덤 숫자값 
-    		String job = jobs[num];
-    		// num을 통해서 인덱스로 접근해서 job을 불러옴 
-    		
-    		party.add(job);
-    		//out.print(job);
-
-    		
-    		int cnt = 0;
-    		if (party.contains(job)) {
-    			
-    			for (int j = 0; j< party.size(); j++){
-    				if (party.get(j) == job) {
-    					cnt += 1;
-    				}
-    				// job과 같으면 count
-
-    			}
-    			//out.print(cnt);
-    		}
-    		
-    		if (party.size() > 10) {
-    			party.clear(); 
-    			// 10개 넘어가면 초기화 
-    		}
-
-    
+<%
     /*
    - 직업 개수만큼의 정수 난수를 발생시켜 주세요. (0 ~ 4)
    - 발생된 난수의 번호대로 party라는 리스트를 선언하셔서 직업을 추가해 주세요.
@@ -56,9 +29,28 @@
    들어있는 문자열 중에 같은 문자열이 발견될 때마다 숫자를 세서
    브라우저에 표현해 주시면 되겠습니다.
    */
-    
-    
-    %>
+   
+   Random r = new Random();
+   int rn = r.nextInt(jobs.length);
+   
+   /* int rn = (int)(Math.random()*5);
+      난수 생성 방법 2
+   */
+   
+   String job = jobs[rn];
+   party.add(job);
+   jobNumber.add(rn);
+   
+   
+   int cnt = 0;
+   for (String player : party){
+	   if (job.equals(player)) cnt++;
+   }
+   
+   
+
+
+   %>    
     
 <!DOCTYPE html>
 <html>
@@ -67,7 +59,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
    <%--
       <img>태그를 사용하여 각 직업에 맞는 사진을 띄워 주세요.
        당신의 역할: 가로 40px, 세로 40px
@@ -89,27 +80,28 @@
 	파티는 유지 (static) List
 	10명되면 clear를 사용
 	--%>
-	<h2>당신의 역할</h2>
 	
-	<div style="float:left">
-	<img width = "40px" height = "40px" alt="sorry" src="./img/<%= num %>.png">
-	</div> 
-	<p>당신에게 부여된 역할은 <strong><%= job %></strong> 입니다. </p>
+	<h2> 당신의 역할 </h2>
+	<p> 
+	<img alt = "pic" src = "img/<%=rn%>.png" width="40px" height="40px">
+	당신에게 부여된 역할은 <strong><%=job %></strong> 입니다.
+	현재 파티에 당신과 같은 역할을 가진 플레이어는 당신 포함 <%= cnt %>명 입니다.
+	</p>
 	
-
-	<p>현재 파티에 당신과 같은 역할을 가진 플레이어는 당신 포함 <strong><%=cnt %></strong> 입니다. </p>
+	<p>
+	현재 파티구성 <br>
+	<% for(int j : jobNumber) {%>
+		<img alt="pic2" src="img/<%= j%>.png" width="20px" height="20px">
+	<% } %>
 	
-	<br>
-	<p> 현재파티구성 </p>  
+	(<%= party.size() %>명 참가 중)
+	</p>
 	
-
-<% for(String name : party) { %> 
-	<img width = "20px" height = "20px" alt="" src="./img/<%= Arrays.asList(jobs).indexOf(name)%>.png">
-	<%} %>
-
-
+	<%
+	if (party.size() == 10) {
+		party.clear();
+		jobNumber.clear();
+	}
+	%>
 </body>
 </html>
-
-
- 
