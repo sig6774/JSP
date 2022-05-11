@@ -26,7 +26,7 @@
 	}
 	else {
 		String id = (String) session.getAttribute("user_id");
-		String nick = (String) session.getAttribute("uesr_nick");
+		String nick = (String) session.getAttribute("user_nick");
 		
 		// session이 있다는 것은 로그인 성공이니깐 값 가져옴 
 		%>

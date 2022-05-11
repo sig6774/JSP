@@ -14,6 +14,7 @@
 
 	<% if (id != null ) {%>
 		<h2> <%= id %>님이 이미 로그인 중입니다~</h2>
+		<a href = "session_welcome.jsp">웰컴 페이지로~</a>
 	<%} else{ %>
 	<form action="session_login_con.jsp" method="post">
       <input type="text" name="id" size="10" placeholder="ID"> <br>
