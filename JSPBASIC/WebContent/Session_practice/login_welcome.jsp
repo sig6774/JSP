@@ -5,6 +5,7 @@
 
 	<%
 		User u = (User) session.getAttribute("login");
+		// 객체 값들을 가져옴
 	%>
 <html>
 <head>

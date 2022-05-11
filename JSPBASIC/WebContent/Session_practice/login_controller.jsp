@@ -33,11 +33,15 @@
     String pw = request.getParameter("password");
     String name = request.getParameter("name");
     String nickname = request.getParameter("nickname");
+    // 값들을 가져오기
     
     if (UserRepository.getUser(id) != null) {
+    	// 저장소에 id가 저장되어 있으면
     	if (UserRepository.getUser(id).getPassword().equals(pw)){
+    		// 사용자가 웹에서 입력한 pw와 저장소에 있는 pw와 같다면 
     		session.setAttribute("login",UserRepository.getUser(id));
     		response.sendRedirect("login_welcome.jsp");
+    		// session저장
     	}
     	else { %>
     	<script>
@@ -49,6 +53,7 @@
     	</script>
     		
     	<%}
+    	// pw가 틀리면 로그인 폼으로 이동
     }
     else{%>
     	 <script>
@@ -59,4 +64,5 @@
     	
     	</script>
     <%}
+    // 저장소에 아이디가 저장되어 있지 않으므로 로그인 폼으로 이동
     %>
