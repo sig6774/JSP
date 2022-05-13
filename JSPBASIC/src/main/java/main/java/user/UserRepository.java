@@ -1,4 +1,4 @@
-package user;
+package main.java.user;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +46,16 @@ public class UserRepository {
 
 	   }
 	   return finduser;
+   }
+   
+   // 매개값으로  id를 받아서 해당 id를 가진 객체를 userList에서 삭제하는 메서드
+   public static void deleteUser(String id) {
+//	   for (User user : userList) {
+//		   if (user.getAccount().contentEquals(id)) {
+//			   userList.remove(user);
+//			   return;
+//		   }
+//	   }
+	   userList.remove(getUser(id));
    }
 }

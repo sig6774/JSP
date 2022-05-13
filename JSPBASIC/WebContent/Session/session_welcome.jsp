@@ -30,6 +30,9 @@
 		
 		// session이 있다는 것은 로그인 성공이니깐 값 가져옴 
 		%>
+		
+		<%@
+			include file="../Application/app_basic.jsp"%>
 
 <html>
 <head>
@@ -39,8 +42,13 @@
 <body>
 	<h2><%= nick %>(<%= id %>)님 환영합니다!</h2>
 	<a href="session_login.jsp">로그인창으로 돌아가기</a>
-	<a href = "/JSPBASIC/JspObjRequest/req_album_answer.jsp">앨범창</a>	
+	<a href = "/JSPBASIC/JspObjRequest/req_album_answer.jsp">앨범창</a>
+	
+	<hr>
+
+	<h3> 방문자 수 : <%= count %> 명</h3>	
 <%} %>
+
 	
 
 </body>

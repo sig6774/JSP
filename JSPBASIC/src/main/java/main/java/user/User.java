@@ -1,4 +1,4 @@
-package user;
+package main.java.user;
 
 public class User {
 	
@@ -7,7 +7,7 @@ public class User {
 	private String password;
 	private String name;
 	private String nickName;
-	// private를 통해서 외부에서 직접 접근하지 못하게 하고 User클래스의 객체 연산으로만 접근가능하도록 사용
+	// private瑜� �넻�빐�꽌 �쇅遺��뿉�꽌 吏곸젒 �젒洹쇳븯吏� 紐삵븯寃� �븯怨� User�겢�옒�뒪�쓽 媛앹껜 �뿰�궛�쑝濡쒕쭔 �젒洹쇨��뒫�븯�룄濡� �궗�슜
 	
 //	public User(){
 //		
@@ -21,15 +21,15 @@ public class User {
 		this.name = name;
 		this.nickName = nickName;
 	}
-	// alt+shift+s를 통해서 매개변수를 받는 생성자 생성 가능
-	// 객체를 생성하면 자동으로 해당 변수들이 초기화되도록 함 
+	// alt+shift+s瑜� �넻�빐�꽌 留ㅺ컻蹂��닔瑜� 諛쏅뒗 �깮�꽦�옄 �깮�꽦 媛��뒫
+	// 媛앹껜瑜� �깮�꽦�븯硫� �옄�룞�쑝濡� �빐�떦 蹂��닔�뱾�씠 珥덇린�솕�릺�룄濡� �븿 
 
 
 
 
 
-	// Getter와 Setter를 통해서 메소드를 통해 접근하여 값을 변경하도록 함(alt+shift+s)
-	// Setter에 입력값의 유효성 검증을 할 수 있음
+	// Getter�� Setter瑜� �넻�빐�꽌 硫붿냼�뱶瑜� �넻�빐 �젒洹쇳븯�뿬 媛믪쓣 蹂�寃쏀븯�룄濡� �븿(alt+shift+s)
+	// Setter�뿉 �엯�젰媛믪쓽 �쑀�슚�꽦 寃�利앹쓣 �븷 �닔 �엳�쓬
 	public String getAccount() {
 		return account;
 	}
