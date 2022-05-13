@@ -35,8 +35,9 @@
 	%>
 	
 	<%
-		ScoreDAO dao = ScoreDAO.getInstance();
-		List<ScoreVO> conditional_search = dao.search(included_keyword);
+		// ScoreDAO dao = ScoreDAO.getInstance();
+		// List<ScoreVO> conditional_search = dao.search(included_keyword);
+		List<ScoreVO> conditional_search = ScoreDAO.getInstance().search(included_keyword);
 	%>
 <html>
 <head>
@@ -78,6 +79,8 @@
     </script>
     
     <%} %>
+    
+    <a href = "score_list.jsp">점수 목록 보기</a>
 
 </body>
 </html>

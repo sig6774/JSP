@@ -167,6 +167,7 @@ public class ScoreDAO {
 	public List<ScoreVO> search(String name) {
 		List<ScoreVO> scoreList = new ArrayList<>();
 		String sql = "SELECT * FROM scores WHERE name LIKE ?";
+		// ?에 % 붙이면 안됨
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -181,6 +182,7 @@ public class ScoreDAO {
 						rs.getInt("id"), rs.getString("name"), rs.getInt("Kor"), rs.getInt("Eng"),
 						rs.getInt("Math"), rs.getInt("Total"), rs.getDouble("Avg"));
 				scoreList.add(vo);
+				// 값을 가져와서 리스트에 객체형태로 저장
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
