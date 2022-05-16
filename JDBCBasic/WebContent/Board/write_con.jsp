@@ -30,9 +30,11 @@
 	// 주소값을 받아옴
 	
 	boolean flag = DAO.insert(board);
+	System.out.println(flag);
 	
 	if (flag){
 		response.sendRedirect("board_insert_success.jsp");
+		//response.sendRedirect("list.jsp");
 		System.out.println("등록완료");
 		// flag가 true이면 등록완료이므로 해당 jsp파일로 이동 
 	}

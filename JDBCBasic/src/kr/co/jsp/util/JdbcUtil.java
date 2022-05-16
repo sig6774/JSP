@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class JdbdUtil {
+public class JdbcUtil {
 	
 	public static void close(Connection conn, PreparedStatement pstmt) {
 		try {

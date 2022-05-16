@@ -1,5 +1,5 @@
 <%@page import="kr.co.jsp.board.model.BoardVO"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*" %>
 <%@page import="kr.co.jsp.board.model.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -48,7 +48,7 @@
 			<a href="content.jsp?bID=<%=board.getBoardId() %>" ><%= board.getTitle() %></a>
 			</td>
 			<td>
-				<a href = "delete.jsp">
+				<a href = "delete.jsp?bID=<%= board.getBoardId() %>">
 				삭제
 				</a>
 			</td>
@@ -56,8 +56,10 @@
 		<%} %>
 		<%} else{ %>
 		<h3>게시글이 존재하지 않습니다!</h3>
+		<%} 
+		%>
+
 		<a href = "write.jsp">새 글 쓰기</a>
-		<%} %>
 	
 	
 	</table>

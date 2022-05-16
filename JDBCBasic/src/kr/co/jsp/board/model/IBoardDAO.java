@@ -30,4 +30,6 @@ public interface IBoardDAO {
 	// 게시글 삭제
 	boolean delete(int num);
 	// 글 번호가 ?로 되기 때문에 매개변수로 넣음
+	
+	public boolean update1(BoardVO board);
 }
