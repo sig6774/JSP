@@ -31,7 +31,7 @@
 			// id와 pw가 같다면 
 			
 			session.setAttribute("user", dao.getUserInfo(id));
-			// getUserInfo()를 통해서 session정보 저장 
+			// getUserInfo()를 통해서 user라는 이름의 객체를 가진 session정보 저장 
 			
 			response.sendRedirect("user_mypage.jsp");
 			// 페이지 이동 

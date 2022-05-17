@@ -232,8 +232,18 @@ public class UserDAO implements IUserDAO {
 
 	@Override
 	public void deleteUser(String User_id) {
-		// TODO Auto-generated method stub
-
+		String sql = "DELETE FROM my_user WHERE USER_ID = ?";
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setString(1, User_id);
+			pstmt.executeUpdate();
+			// ?에 값을 넣고 쿼리 실행 
+			
+			System.out.println("회원정보 삭제 성공");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 
