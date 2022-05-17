@@ -59,14 +59,17 @@
 					<li><a href="/MyWeb">HOME</a></li>
 					<li><a href="">Member</a></li>
 					<li><a href="/MyWeb/list.board">BOARD</a></li>
+				<% if (session.getAttribute("user") == null) {
+				// 로그인을 안했으면 login과 join을 보여주고  %>
 					<li><a href="/MyWeb/user/user_login.jsp">LOGIN</a></li>
-					<li><a href="/MyWeb/joinPage.user" style="color: red">JOIN</a>
+					<li><a href="/MyWeb/user/user_join.jsp" style="color: red">JOIN</a>
 					</li>
-
-					<!-- 					<li><a href="/MyWeb/user/user_logout.jsp">LOGOUT</a></li>
-					<li><a href="/MyWeb/user/user_mypage.jsp" style="color: red">MYPAGE</a> -->
+				<%} else { 
+				// 로그인을 햇으면 logout과 mypage를 보여줌 %>
+					<li><a href="/MyWeb/user/user_logout.jsp">LOGOUT</a></li>
+					<li><a href="/MyWeb/user/user_mypage.jsp" style="color: red">MYPAGE</a>
 					</li>
-
+				<%} %>
 
 				</ul>
 			</div>

@@ -25,7 +25,7 @@
 		
 		UserDAO dao = UserDAO.getInstance();
 		int check = dao.userCheck(id, pw);
-		System.out.println(check);
+		System.out.println("유효성 검사  : " +check);
 		
 		if (check == 1){
 			// id와 pw가 같다면 
@@ -44,7 +44,7 @@
 				alert("비밀번호가 틀렸습니다.");
 				history.back();
 			</script>
-		<% } else if (check == -1){
+		<% } else{
 			// 아이디가 틀리다면 
 	%>
 	<script>
@@ -52,4 +52,4 @@
 		location.href = "user_login.jsp";
 	</script>
 	
-	<% }  
+	<% }  %>
