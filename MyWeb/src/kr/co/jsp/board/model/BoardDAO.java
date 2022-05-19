@@ -143,5 +143,49 @@ public class BoardDAO implements IBoardDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	 
+	@Override
+	public List<BoardVO> searchBoard(String keyword, String category) {
+		List<BoardVO> boards = new ArrayList<>();
+		String sql = "SELECT * FROM my_board WHERE " + category + " LIKE ?";
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setString(1, "%" + keyword + "%");
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardVO board = new BoardVO(
+						rs.getInt("BOARD_ID"),
+						rs.getString("WRITER"),
+						rs.getString("TITLE"),
+						rs.getString("CONTENT"),
+						rs.getTimestamp("REG_DATE"),
+						rs.getInt("HIT")
+						);	
+				boards.add(board);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return boards;
+	}
+	
+	// hit를 올리기 위한 로직 
+	@Override
+	public void upHit(int Boardid) {
+		String sql = "UPDATE my_board SET hit = hit+1 WHERE board_id = ?";
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			pstmt.setInt(1, Boardid);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }

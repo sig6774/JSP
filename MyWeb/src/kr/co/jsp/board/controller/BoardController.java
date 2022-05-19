@@ -19,6 +19,7 @@ import kr.co.jsp.board.service.GetListService;
 import kr.co.jsp.board.service.IBoardService;
 import kr.co.jsp.board.service.ModifyService;
 import kr.co.jsp.board.service.RegistService;
+import kr.co.jsp.board.service.SearchService;
 import kr.co.jsp.board.service.UpdateService;
 
 @WebServlet("*.board")
@@ -85,13 +86,14 @@ public class BoardController extends HttpServlet {
 			sv = new GetListService();
 			sv.execute(request, response);
 
+
 			// request객체를 다음 화면까지 운반하기 위한 forward 기능을 지원하는 객체
 			// forward는 연결이 끊어지지 않은 상태에서 응답을 전달
 			// forward는 서버내에서 이동을 한 뒤 응답을 하기 때문에 request가 사라지지 않음
 			dp = request.getRequestDispatcher("board/board_list.jsp");
 			// 값을 지정한 위치에 보냄
 
-			dp.forward(request, response);
+			dp.forward(request, response); 
 			// 지정한 위치를 보낼 때 request와 response를 가지고 보냄
 
 			break;
@@ -143,6 +145,23 @@ public class BoardController extends HttpServlet {
 			// sendRedirect와 getRequestDispatcher 잘 모르겠음...
 				// sendRedirect는 응답을 하고 다시 요청을 하고 싶을 때 사용하고 
 				// forward는 request의 특징인 응답을 하면 사라지는 특징 때문에 일단 응답을 하지 않고 서버 내에서 데이터를 다른 곳으로 전달해서 그곳에서 응답을 하게 만드는 방식			
+			break;
+			
+		case "search":
+			System.out.println("글 검색 요청이 들어옴");
+			/*
+			 검색 요청을 받아서 키워드, 카테고리 값을 이용해서 
+			 검색 데이터를 board_list.jsp에 표현
+			 (값을 보내는 거니깐 forward사용하면 되겠당) 
+			 */
+			sv = new SearchService();
+			sv.execute(request, response);
+			
+			// GetListService의 클래스에서 화면에 출력하도록 했기 때문에 응답을 할 수 없음  
+			// 그렇기 때문에 조건을 생성해서 두번의 응답을 할 수 없도록 지정 
+			if (request.getAttribute("bList") != null) {
+			dp = request.getRequestDispatcher("board/board_list.jsp");
+			dp.forward(request, response); }
 			break;
 		}
 

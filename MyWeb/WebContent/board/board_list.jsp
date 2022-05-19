@@ -30,9 +30,15 @@
 	 		location.href="user/user_login.jsp";
 	 	</script>
 	 </c:if>
+	 
+	 <c:if test="${searchFail}">
+	 	<script>
+	 		alert("조회 결과가 없습니다.");
+	 		location.href = "/MyWeb/list.board";
+	 	</script>
+	 </c:if>
 
 	<jsp:include page="../include/header.jsp"/>
-
 	<div class="container">
 		<h2>My Web게시판</h2>
 		
@@ -55,9 +61,15 @@
 						<td>${b.writer}</td>
 						<td>
 							<a href="/MyWeb/content.board?bId=${b.boardId}">${b.title}</a>
+							&nbsp;&nbsp;
+							<c:if test="${b.newMark }">
+							<!-- newMark가 true면 (하루가 지나지 않았으면) -->
+								<img alt="newMark" src="/MyWeb/img/icon_new.gif">
+							</c:if>
 						</td>
 						<td>
-							${b.regDate}
+							<fmt:formatDate value="${b.regDate }" pattern = "yyyy년 MM월 dd일  a hh시 mm분"/>
+							<!-- fmt태그를 이용하여 format 지정 -->
 						</td>
 						<td>${b.hit}</td>
 					</tr>

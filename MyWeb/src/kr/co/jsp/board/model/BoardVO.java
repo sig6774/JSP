@@ -19,6 +19,9 @@ public class BoardVO {
 	private Timestamp regDate;
 	private int hit;
 	
+	// new마크를 띄울지 말지의 여부를 판단하는 논리 필드 추가
+	private boolean newMark;
+	
 	public BoardVO() {
 		// TODO Auto-generated constructor stub
 	}
@@ -81,4 +84,14 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+
+	public boolean isNewMark() {
+		return newMark;
+	}
+
+	public void setNewMark(boolean newMark) {
+		this.newMark = newMark;
+	}
+	
+	
 }

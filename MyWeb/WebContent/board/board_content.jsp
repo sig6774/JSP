@@ -74,7 +74,9 @@
                         <div class="row">
                             <div class="col-md-offset-1 col-md-5">
                                 <p class="last-update">
-                                ${content.regDate}
+                                
+          							<fmt:formatDate value="${content.regDate}" pattern = "yyyy년 MM월 dd일  a hh시 mm분"/>
+                                
                                    <!-- 작성일 -->
                                 </p>
                             </div>
