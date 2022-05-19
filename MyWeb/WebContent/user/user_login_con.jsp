@@ -1,4 +1,4 @@
-<%@page import="kr.com.jsp.user.model.UserDAO"%>
+<%@page import="kr.co.jsp.user.model.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	

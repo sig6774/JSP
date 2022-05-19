@@ -8,11 +8,12 @@
 </head>
 <body>
 
-	<form action="jstl_choose.jsp">
-		# 이름: <input type="text" name="name"> <br>
-		# 나이: <input type="text" name="age"> <br>
-		<input type="submit" value="확인">
-	</form>
+	<p>
+		# 아이디 : ${ sessionScope.user.id}<br>
+		# 이름 : ${ sessionScope.user.name}<br>
+		# 이메일 : ${ sessionScope.user.email}<br>
+		# 주소 : ${ sessionScope.user.address}<br>
+	</p>
 
 </body>
 </html>

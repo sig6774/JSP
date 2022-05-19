@@ -1,4 +1,4 @@
-package kr.com.jsp.user.model;
+package kr.co.jsp.user.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
