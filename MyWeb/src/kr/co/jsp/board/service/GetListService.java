@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.jsp.board.commons.PageVO;
 import kr.co.jsp.board.model.BoardDAO;
 import kr.co.jsp.board.model.BoardVO;
 
@@ -14,8 +15,20 @@ public class GetListService implements IBoardService {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// controller에서 수행하던 작업(이동 제어제외) 모두 가져옴
+		PageVO paging = new PageVO();
 		
-		List<BoardVO> boardList = BoardDAO.getInstance().listBoard();
+		// 사용자가 처음 게시판에 들어올 때는 페이지 선택을 하지 않기 때문에 페이지 선택을 1페이지로 게시물 개수를 10개로 지정
+		// 사용자가 버튼을 눌렀을때만 밑의 2개의 코드를 실행해야함
+		if (request.getParameter("page") != null) {
+		paging.setPage(Integer.parseInt(request.getParameter("page")));
+		// 사용자가 클릭햇을때의 버튼을 page로 설정
+		paging.setCountPerPage(Integer.parseInt(request.getParameter("cpp")));
+		
+		System.out.println("선택한 페이지 : " + paging.getPage());
+		System.out.println("게시물 수 : " + paging.getCountPerPage());
+		}
+		
+		List<BoardVO> boardList = BoardDAO.getInstance().listBoard(paging);
 		// request에 boardlist에 담으면 응답을 한 뒤 소멸하기 때문에 관리하기 좋음
 		
 		// boardlist에서 BoardVO를 하나씩 뽑아서 현재 날짜 기준으로 1일이 지났는지 파악

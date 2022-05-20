@@ -16,7 +16,8 @@ public class ModifyService implements IBoardService {
 		
 		BoardVO board = BoardDAO.getInstance().contentBoard(bId);
 		// 글번호를 바탕으로 기존에 저장되어 있는 board 불러오기
-		
+		board.setContent(board.getContent().replace("<br>","\r\n"));
+		// contentService에서 replace()로 바꿨던 것을 다시 바꿔줌 왜냐면 수정할 때에는 웹에서 보여짐으로 <br>이 모두 보임
 		request.setAttribute("ModiBoard", board);
 		System.out.println("modify service 동작 " + board.getboardId());
 		

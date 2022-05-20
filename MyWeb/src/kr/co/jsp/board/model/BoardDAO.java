@@ -10,6 +10,8 @@ import java.util.List;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kr.co.jsp.board.commons.PageVO;
+
 public class BoardDAO implements IBoardDAO {
 	
 	// Connection pool
@@ -59,9 +61,13 @@ public class BoardDAO implements IBoardDAO {
 	
 
 	@Override
-	public List<BoardVO> listBoard() {
+	public List<BoardVO> listBoard(PageVO paging) {
 		List<BoardVO> articles = new ArrayList<>();
-		String sql = "SELECT * FROM my_board ORDER BY board_id DESC";
+		String sql = "SELECT * FROM "
+				+ "(SELECT ROWNUM AS rn, tbl.* FROM "
+				+ "	(SELECT * FROM my_board ORDER BY board_id DESC) tbl"
+				+ ") WHERE rn > " +(paging.getPage() -1) * paging.getCountPerPage()
+				+ "AND rn <= " + (paging.getPage() * paging.getCountPerPage());
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 						ResultSet rs = pstmt.executeQuery()){
@@ -100,7 +106,8 @@ public class BoardDAO implements IBoardDAO {
 						rs.getInt("board_id"),
 						rs.getString("writer"),
 						rs.getString("title"),
-						rs.getString("content"),
+						rs.getString("content").replace("\r\n", "<br>"),
+						// 특정 값을 대체
 						rs.getTimestamp("reg_date"),
 						rs.getInt("hit"));
 			}
@@ -186,6 +193,24 @@ public class BoardDAO implements IBoardDAO {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	@Override
+	public int countboards() {
+		int count = 0;
+		String sql = "SELECT count(*) FROM my_board";
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				count = rs.getInt("count(*)");
+				// 조회 값 가져오기
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }
