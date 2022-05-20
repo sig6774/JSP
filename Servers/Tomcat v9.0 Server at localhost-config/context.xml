@@ -35,7 +35,7 @@
     	password = "jsp"
     	name = "jdbc/myOracle"
     	type = "javax.sql.DataSource"
-    	maxActive = "8"
+    	maxActive = "16"
     	maxWait = "1000"
     />
 

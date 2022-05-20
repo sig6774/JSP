@@ -36,4 +36,11 @@ public class PageVO {
 	public void setCountPerPage(int countPerPage) {
 		this.countPerPage = countPerPage;
 	}
+
+	@Override
+	public String toString() {
+		return "PageVO [page=" + page + ", countPerPage=" + countPerPage + "]";
+	}
+	
+	
 }

@@ -81,7 +81,9 @@
                                 </p>
                             </div>
                             <div class="btn-group col-md-offset-1 col-md-5">
-                                <a class="btn btn-info" href="/MyWeb/list.board">목록 보기</a>
+                            	
+                                <a class="btn btn-info" href="/MyWeb/list.board?page=${param.page}&cpp=${param.cpp}">목록 보기</a>
+													<!-- 목록보기를 했을때 뒤로가기와 비슷한 효과를 보여주기 위해 -->
                                 	<c:choose>
                                 		<c:when test="${user.user_id == content.writer }">
                                 		<!-- 수정과  삭제는 로그인한 사용자만 가능하므로 로그인한 아이디와 작성자의 아이디가 같으면 수정 및 삭제기능 활성화-->	
