@@ -28,7 +28,7 @@
 
 	<%--
 		로그인하지 않은  사용자가 게시판에 들어왔을 경우 돌려보내는 코드를 작성.
-	 --%>
+	 
 	<c:if test="${user == null}">
 		<script>
 			alert("회원만 이용 가능한 게시판입니다. 로그인 해 주세요.");
@@ -37,7 +37,9 @@
 			location.href = "user/user_login.jsp";
 		</script>
 	</c:if>
-
+	
+	loginAuthFilter가 있으므로 사용 X
+--%>
 	<c:if test="${searchFail}">
 		<script>
 			alert("조회 결과가 없습니다.");

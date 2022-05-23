@@ -48,7 +48,7 @@
 			// 아이디가 틀리다면 
 	%>
 	<script>
-		alert("아이디가 없습니다. 회원가입해주세요")
+		alert("아이디가 없습니다. 회원가입해주세요");
 		location.href = "user_login.jsp";
 	</script>
 	

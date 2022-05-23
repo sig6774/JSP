@@ -62,7 +62,7 @@
 				<% if (session.getAttribute("user") == null) {
 				// 로그인을 안했으면 login과 join을 보여주고  %>
 					<li><a href="/MyWeb/user/user_login.jsp">LOGIN</a></li>
-					<li><a href="/MyWeb/user/user_join.jsp" style="color: red">JOIN</a>
+					<li><a href="/MyWeb/joinPage.user" style="color: red">JOIN</a>
 					</li>
 				<%} else { 
 				// 로그인을 햇으면 logout과 mypage를 보여줌 %>

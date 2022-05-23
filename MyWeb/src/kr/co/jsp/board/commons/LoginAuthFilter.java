@@ -9,11 +9,17 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.SendResult;
 
 
 @WebFilter("*.board")
 // .board로 끝나는 모든 요청에 반응
+//@WebFilter(filterName = "loginAuth", 
+//			urlPatterns = {"/write.board", "/modify.board", "/delete.board", "/user/user_mypage.jsp"},
+//			servletNames = {"basic", "board"})
+// urlpattern과 servletNames 같은 것들로 filter를 줄 수 있음
 public class LoginAuthFilter implements Filter {
 
 
@@ -28,7 +34,6 @@ public class LoginAuthFilter implements Filter {
 		
 	}
 
-
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		/*
 		 필터의 핵심 메서드 
@@ -38,9 +43,23 @@ public class LoginAuthFilter implements Filter {
 		 */
 		
 		System.out.println("doFilter 메서드 실행");
-		// 평소에 사용하는 타입은 httpServletRequest이고 매개변수로 받는 request는 ServletRequest이기 때문에 
+		// 평소에 사용하는 타입은 httpServletRequest이고 매개변수로 받는 request는 ServletRequest이기 때문에
+		
 		// 부모타입의 ServletRequest를 자식 타입인 httpServletRequest로 끌어내리면 됨
 		HttpSession session = ((HttpServletRequest) request).getSession();
+		
+		// 요청을 filter가 먼저 검사
+		if(session.getAttribute("user") == null) {
+			// 사용자의 정보가 있는 user라는 이름의 세션이 없다면 
+			System.out.println("회원 권한 없음");
+			((HttpServletResponse)response).sendRedirect("/MyWeb/");
+			// user session이 없으면 controller로 접근하지 못하게 하고 메인 페이지로 이동하게 만듬
+			return;
+		}
+		// 사용자 정보가 있다면 필터를 통과 
+		// doFilter를 해야 controller로 넘어감
+		chain.doFilter(request, response);
+		
 		
 	}
 

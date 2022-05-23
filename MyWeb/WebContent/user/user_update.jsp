@@ -35,7 +35,7 @@
                <h2><span style="color: gray;">MyWeb</span> 회원 정보 수정</h2>
             </div>
             <div class="panel-body">
-               <form action="user_update_con.jsp" method="post" style="margin-bottom: 0;">
+               <form action="/MyWeb/UpdateService.user" method="post" style="margin-bottom: 0;">
                    
                   <table
                      style="cellpadding: 0; cellspacing: 0; margin: 0 auto; width: 100%">
