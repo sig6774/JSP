@@ -20,6 +20,7 @@ public class UpdateService implements IUserService {
 		String address = request.getParameter("address");
 
 		HttpSession session = request.getSession();
+		// session을 해당 클래스에서 사용하기 위해 
 
 		UserVO user = (UserVO) session.getAttribute("user");
 		String pw = user.getUser_pw();
@@ -29,17 +30,18 @@ public class UpdateService implements IUserService {
 		UserDAO dao = UserDAO.getInstance();
 		dao.updateUser(updateUser);
 
-
+		session.setAttribute("user", dao.getUserInfo(updateUser.getUser_id()));
+		
 		PrintWriter out;
 		response.setContentType("text/html; charset=UTF-8");
 
 		try {
 			out = response.getWriter();
 			String htmlcode = "<script> \r\n + " + "alert('회원정보가 수정되었습니다'); \r\n"
-					+ "location.href = 'user/user_mypage.jsp'; \r\n" + "</script>";
+					+ "location.href = '/MyWeb/myPage.user'; \r\n" + "</script>";
 			out.print(htmlcode);
 			out.flush();
-			session.setAttribute("user", dao.getUserInfo(updateUser.getUser_id()));
+			
 
 			return;
 		} catch (IOException e) {

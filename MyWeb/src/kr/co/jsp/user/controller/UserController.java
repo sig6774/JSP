@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.jsp.board.service.RegistService;
 import kr.co.jsp.user.service.ChangePWService;
+import kr.co.jsp.user.service.DeleteService;
 import kr.co.jsp.user.service.IUserService;
 import kr.co.jsp.user.service.JoinService;
 import kr.co.jsp.user.service.LoginService;
@@ -41,13 +42,13 @@ public class UserController extends HttpServlet {
 		String uri = request.getRequestURI();
 		uri = uri.substring(request.getContextPath().length() + 1, uri.lastIndexOf("."));
 		// uri 정제 
+		
 		System.out.println("uri 확인 : " + uri);
 		
 		switch(uri) {
 		case "joinPage":
 			System.out.println("회원가입 페이지로 이동 요청");
 			response.sendRedirect("user/user_join.jsp");
-			
 			break;
 			
 		case "join" :
@@ -55,7 +56,6 @@ public class UserController extends HttpServlet {
 			sv = new JoinService();
 			sv.execute(request, response);
 			// service에서 응답을 모두 끝냈으니 controller에서는 응답을 할 필요가 없음
-			
 			break;
 			
 		case "loginPage":
@@ -68,24 +68,47 @@ public class UserController extends HttpServlet {
 			sv = new LoginService();
 			sv.execute(request, response);
 			// service쪽에서 응답이 모두 나갔으므로 따로 지정할 게 없음
-			
 			break;
 		
 		case "myPage":
 			System.out.println("마이페이지로 이동 요청");
 			response.sendRedirect("user/user_mypage.jsp");
 			break;
+			
+		case "pwPage":
+			System.out.println("비밀번호 변경 페이지로 이동 요청");
+			response.sendRedirect("user/user_change_pw.jsp");
+			break;
 		
 		case "ChangePWService":
 			System.out.println("비밀번호 변경 요청");
 			sv = new ChangePWService();
 			sv.execute(request, response);;
+			// service에서 요청을 모두 처리했기 때문에 controller에서 따로 처리할 필요 없음
+			break;
+			
+		case "modPage":
+			System.out.println("회원정보 변경 페이지로 이동 요청");
+			response.sendRedirect("user/user_update.jsp");
 			break;
 			
 		case "UpdateService":
 			System.out.println("회원 정보 수정 요청");
 			sv = new UpdateService();
 			sv.execute(request, response);
+			// service에서 요청을 모두 처리했기 때문에 controller에서 따로 처리할 필요 없음
+			break;
+		
+		case "delPage":
+			System.out.println("탈퇴 페이지로 이동 요청");
+			response.sendRedirect("user/user_delete.jsp");
+			break;
+		
+		case "DeleteService":
+			System.out.println("회원 탈퇴 요청");
+			sv = new DeleteService();
+			sv.execute(request, response);
+			// service에서 요청을 모두 처리했기 때문에 controller에서 따로 처리할 필요 없음
 			break;
 		}
 		

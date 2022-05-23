@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<% 
+<%-- <% 
 		// 주소를 치고 강제로 들어오는 접근 차단
 		if (session.getAttribute("user") == null ){ %>
 <script>
@@ -10,9 +10,10 @@
 				location.href = "user_login.jsp";
 			</script>
 <% } else{
-			UserVO user = (UserVO) session.getAttribute("user");
+	UserVO user = (UserVO) session.getAttribute("user");
+}
 			// Session 가져오기 
-	%>
+	%>  --%>
 
 <html>
 <head>
@@ -27,15 +28,15 @@
 		<h2>My page</h2>
 		<hr>
 		<p>
-			<strong><%=  user.getUser_name() %>(<%= user.getUser_id() %>)님의 정보를 관리합니다.</strong>
+			<strong>${user.user_name}(${user.user_id})님의 정보를 관리합니다.</strong>
 		</p>
 		<hr>
 		<br>
 		
 		<p>
-			<a href="user_change_pw.jsp">비밀번호 변경</a> &nbsp;
-			<a href="user_update.jsp">회원정보 변경</a> &nbsp;
-			<a href="user_delete.jsp">회원 탈퇴</a> 
+			<a href="/MyWeb/pwPage.user">비밀번호 변경</a> &nbsp;
+			<a href="/MyWeb/modPage.user">회원정보 변경</a> &nbsp;
+			<a href="/MyWeb/delPage.user">회원 탈퇴</a> 
 		</p>
 		
 	</div>
@@ -47,5 +48,3 @@
 
 </body>
 </html>
-
-<% } %>

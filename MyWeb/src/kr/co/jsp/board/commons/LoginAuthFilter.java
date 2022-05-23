@@ -14,11 +14,11 @@ import javax.servlet.http.HttpSession;
 import javax.websocket.SendResult;
 
 
-@WebFilter("*.board")
+//@WebFilter("*.board")
 // .board로 끝나는 모든 요청에 반응
-//@WebFilter(filterName = "loginAuth", 
-//			urlPatterns = {"/write.board", "/modify.board", "/delete.board", "/user/user_mypage.jsp"},
-//			servletNames = {"basic", "board"})
+@WebFilter(filterName = "loginAuth", 
+			urlPatterns = {"/write.board", "/modify.board", "/delete.board", "/myPage.user"},
+			servletNames = {"basic", "board"})
 // urlpattern과 servletNames 같은 것들로 filter를 줄 수 있음
 public class LoginAuthFilter implements Filter {
 
