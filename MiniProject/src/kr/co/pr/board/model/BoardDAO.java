@@ -10,6 +10,8 @@ import java.util.List;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kr.co.pr.board.page.PageVO;
+
 public class BoardDAO implements IBoardDAO {
 	
 	private DataSource ds;
@@ -51,12 +53,21 @@ public class BoardDAO implements IBoardDAO {
 	}
 
 	@Override
-	public List<BoardVO> listBoard() {
+	public List<BoardVO> listBoard(PageVO page) {
+		// 페이지 기능을 구현하기 위해서 매개변수로 페이지 객체 받아와야함 
 		List<BoardVO> boards = new ArrayList<>();
-		String sql = "SELECT * FROM PR_BOARD ORDER BY BOARD_ID asc";
+		String sql = "SELECT * FROM "
+				+ "(SELECT ROWNUM AS rn, tbl.* FROM "
+				+ "	(SELECT * FROM my_board ORDER BY board_id DESC) tbl"
+				+ ") WHERE rn > " +(page.getPage() -1) * page.getPerPage()
+				+ "AND rn <= " + (page.getPage() * page.getPerPage());
+				// 현재 페이지가 있는 곳을 보여주며 범위까지도 보여주는 기능 
+		
+		System.out.println("현재 페이지 " + page.getPage());
 		try(Connection conn = ds.getConnection(); 
-				PreparedStatement pstmt = conn.prepareStatement(sql); 
-				ResultSet rs = pstmt.executeQuery()){
+				PreparedStatement pstmt = conn.prepareStatement(sql) 
+				){
+			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BoardVO board = new BoardVO(
 						rs.getInt("board_id"),
@@ -125,6 +136,28 @@ public class BoardDAO implements IBoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	// 전체 게시물 개수를 반환해주는 메소드 
+	public int allboard() {
+		int boardCount = 0;
+		String sql = "SELECT count(*) FROM pr_board";
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+				// 쿼리 실행 
+				ResultSet rs = pstmt.executeQuery();
+				
+				if (rs.next()) {
+					//
+					boardCount = rs.getInt("count(*)");
+				}
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return boardCount;
 	}
 
 }

@@ -14,7 +14,7 @@
 <!--메인만 적용되는 css영역-->
 <style>
 body {
-	background-image: url(images/main.jpg);
+	background-image: images/main.jpg;
 	background-repeat: no-repeat;
 	background-size: cover
 }

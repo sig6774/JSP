@@ -14,7 +14,7 @@
 <!--메인만 적용되는 css영역-->
 <style>
 body {
-	background-image: /WebTemplete/images/main.jpg;
+	background-image: /MiniProject/images/main.jpg;
 	background-repeat: no-repeat;
 	background-size: cover
 }
@@ -37,8 +37,8 @@ body {
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/WebTemplete/index.jsp" style="margin-right: 10px;">메인</a></li>
-				<li><a href="/WebTemplete/Boardlist.Board">게시판</a></li>
+				<li class="active"><a href="/MiniProject/index.jsp" style="margin-right: 10px;">메인</a></li>
+				<li><a href="/MiniProject/Boardlist.Board">게시판</a></li>
 				<!-- 게시판 이동 경로 설정 -->
 			</ul>
 
@@ -48,7 +48,7 @@ body {
 					aria-expanded="false">접속하기<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="/MiniProject/user/user_join.jsp">회원가입</a></li>
 					</ul></li>
 			</ul>
 
