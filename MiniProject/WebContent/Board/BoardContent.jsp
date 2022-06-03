@@ -57,11 +57,11 @@
 						<!--구현로직: 버튼은 온클릭을 사용하던 자바스크립트를 이용해야 합니다-->
 						<div class="form-group">
 							<button type="button" class="btn btn-success"
-								onclick="location.href = '/WebTemplete/Boardlist.Board'">목록</button>
+								onclick="location.href = '/MiniProject/Boardlist.Board'">목록</button>
 							<button type="button" class="btn btn-info"
-								onclick="location.href = '/WebTemplete/modify.Board?bId=${board.boardId}'">수정</button>
+								onclick="location.href = '/MiniProject/modify.Board?bId=${board.boardId}'">수정</button>
 							<button type="button" class="btn btn-info"
-								onclick="location.href = '/WebTemplete/delete.Board?bId=${board.boardId}'">삭제</button>
+								onclick="location.href = '/MiniProject/delete.Board?bId=${board.boardId}'">삭제</button>
 							<!-- bid를 보내서 수정 및 삭제에서 그걸 바탕으로 값을 뿌려주면 될듯? -->
 
 						</div>

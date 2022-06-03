@@ -74,7 +74,7 @@
 								<td>${board.boardId }</td>
 								<%-- <td><a href = "Board_content.jsp?bId=<%= board.getBoardId()%>"><%= board.getTitle() %></a></td>--%>
 								<td><a
-									href="/WebTemplete/content.Board?bId=${board.boardId}">${board.title}</a>
+									href="/MiniProject/content.Board?bId=${board.boardId}">${board.title}</a>
 									<!-- 제목을 클릭하면 해당 게시물로 가도록 지정하고 boardid값도 같이 가도록 설정  --> <%-- <td><%= board.getWriter() %></td>
 							<td><%= board.getContent() %></td>
 							<td><%= board.getRegDate() %></td> --%>
@@ -95,27 +95,35 @@
 						<!-- 이전 버튼  -->
 						<c:if test="${page.previousButton }">
 							<li><a
-								href="/MiniProject/Boardlist.Board?pagenum=${page.beginPage-1 }&perpage=${page.page.getPerPage()}"
-								style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a></li>
+							
+								href="/MiniProject/Boardlist.Board?pagenum=${page.page.page -1 }&perpage=${page.page.getPerPage()}"
+								style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+																			<!-- 현재페이지를 받아와서 -1하면 됨 근데 코드가 너무 알아보지 못하겠다 ㅠㅠㅠ 나도 헷갈리넴 -->
+								</li>
 							<!-- 현재 페이지번호와 페이지당 몇개씩 보여주는지를 Generatepage와 page객체에 이전 버튼을 클릭했을 때값을 보내줌  -->
 							<!-- 만약에 1페이지인데 이전버튼을 누르면 어떻게 해야할까? 조건문 써서 pagenum이 1보다 작으면 그냥 다시 back시킬까? -->
 						</c:if>
-						<c:forEach var="viewpage" begin="${page.beginPage }" end="${page.endPage }">
-						<!-- 반복  -->
-						<li class="active"><a href="/MiniProject/BoardList.Board?pagenum=${viewpage }&perpage=${page.page.getPerPage()}">${viewpage}</a></li>
-						<!-- 반복문을 돌리기 때문에 viewpage로 해서 현재 페이지 값을 가져옴  -->
-						<!-- 페이지 이동 클릭하면 파라미터값은 가지만 화면에 보이지 않음 -->
+
+
+						<c:forEach var="viewpage" begin="${page.beginPage }"
+							end="${page.endPage }">
+							<!-- 반복  -->
+							<li class="active"><a
+								href="/MiniProject/Boardlist.Board?pagenum=${viewpage }&perpage=${page.page.getPerPage()}"
+								style="margin-top: 0; height: 40px; color: black; border: 1px solid #643691; ${viewpage == page.page.page ? 'background-color: pink;' : ''}">${viewpage}</a></li>
+							<!-- 반복문을 돌리기 때문에 viewpage로 해서 현재 페이지 값을 가져옴  -->
+							<!-- 페이지 이동 클릭하면 파라미터값은 가지만 화면에 보이지 않음 -->
+							<!-- 현재 페이지와 페이지당 보여질 게시물 수를 나눴을 때 나머지가 0이면 페이지 바가 안보임... -->
 
 						</c:forEach>
 						<c:if test="${page.nextButton }">
 							<li><a
-								href="/MiniProject/Boardlist.Board?pagenum=${page.beginPage+1 }&perpage=${page.page.getPerPage()}"
+								href="/MiniProject/Boardlist.Board?pagenum=${page.page.page +1 }&perpage=${page.page.getPerPage()}"
 								style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a></li>
 						</c:if>
-						<!-- 페이지 이동했다가 다시 이전버튼 누르면 오류남  이거 고치기 ================================================= -->
 					</ul>
 					<button class="btn btn-info pull-right"
-						onclick="location.href = '/WebTemplete/write.Board'">글쓰기</button>
+						onclick="location.href = '/MiniProject/write.Board'">글쓰기</button>
 					<!-- controller에 write.board로 보내고 regist를 통해서 작성  -->
 
 				</div>

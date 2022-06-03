@@ -26,9 +26,14 @@ public class GeneratePage {
 
 		// 시작 페이지 계산 
 		this.beginPage = (int) Math.floor(page.getPage() / (double) page.getPerPage()) * page.getPerPage() + 1;
-
+		
 		// 이전 버튼 활성화 
-		if (this.beginPage == 1) {
+		String s = Integer.toString(this.beginPage);
+		int e = Integer.parseInt(s.substring(s.length()-1));
+		// 인덱스값을 통해 끝자리만 추출
+		if (e == 1) {
+			// begintPage === 1이면 그냥 beginPage가 1일때만 이전버튼이 활성화되는데 나는 11, 21, 31 ... 이렇게 되었을 때 모두 버튼 활성화하고 싶은데
+			
 			this.previousButton = true;
 		}
 

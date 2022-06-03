@@ -27,7 +27,7 @@
 <body>
 <%-- 	<%@ include file="/include/header.jsp" %>
  --%>	
-	<%@ include file="/include/header.jsp" %>
+	<%@ include file="/include/header.jsp"%>
  
 	
 	
@@ -35,12 +35,13 @@
     <section>
         <div class="container" style="margin-top: 5%;">
             <div class="row">
-                <form action = "/WebTemplete/regist.Board" method = "post">
+                <form action = "/MiniProject/regist.Board" method = "post">
                 <!-- write_con.jsp로 이동 -->
                     <table class="table table-striped" >
                         <thead>
                             <tr>
                                 <th colspan="2" style="background-color: #9DCAFF; text-align: center;">게시판 글쓰기</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +69,7 @@
             </div>
         </div>
     </section>
-	<%@ include file="/include/footer.jsp" %>
+	<%@ include file="/include/footer.jsp"%>
 
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

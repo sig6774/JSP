@@ -19,6 +19,7 @@ public class ListService implements IBoardService {
 		PageVO page = new PageVO(); 
 		
 		// pagenum라는 이름의 요청값이 들어왔을 때만 페이징 수행하기 위해 조건문 걸어줌 
+		System.out.println("페이지 값: " +  request.getParameter("pagenum"));
 		if (request.getParameter("pagenum") != null) {
 			page.setPage(Integer.parseInt(request.getParameter("pagenum")));
 			page.setPerPage(Integer.parseInt(request.getParameter("perpage")));

@@ -73,7 +73,7 @@ public class BoardController1 extends HttpServlet {
 			sv.execute(request, response);
 			// writeService()에서 실행 
 			
-			response.sendRedirect("/WebTemplete/Boardlist.Board");
+			response.sendRedirect("/MiniProject/Boardlist.Board");
 			// 글쓰기에서 글등록하면 forwarding오류남 
 			// 물어보기
 			break;
@@ -115,7 +115,7 @@ public class BoardController1 extends HttpServlet {
 			System.out.println("글 수정 요청");
 			sv = new UpdateService();
 			sv.execute(request, response);
-			response.sendRedirect("/WebTemplete/Boardlist.Board");
+			response.sendRedirect("/MiniProject/Boardlist.Board");
 
 			
 			break;
@@ -125,7 +125,7 @@ public class BoardController1 extends HttpServlet {
 			sv = new DeleteService();
 			sv.execute(request, response);
 			
-			response.sendRedirect("/WebTemplete/Boardlist.Board");
+			response.sendRedirect("/MiniProject/Boardlist.Board");
 			break;
 			
 			

@@ -58,7 +58,7 @@ public class BoardDAO implements IBoardDAO {
 		List<BoardVO> boards = new ArrayList<>();
 		String sql = "SELECT * FROM "
 				+ "(SELECT ROWNUM AS rn, tbl.* FROM "
-				+ "	(SELECT * FROM my_board ORDER BY board_id DESC) tbl"
+				+ "	(SELECT * FROM PR_BOARD ORDER BY board_id DESC) tbl"
 				+ ") WHERE rn > " +(page.getPage() -1) * page.getPerPage()
 				+ "AND rn <= " + (page.getPage() * page.getPerPage());
 				// 현재 페이지가 있는 곳을 보여주며 범위까지도 보여주는 기능 
@@ -91,8 +91,9 @@ public class BoardDAO implements IBoardDAO {
 		String sql = "SELECT * FROM PR_BOARD WHERE board_id = ?";
 		try(Connection conn = ds.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			ResultSet rs = null;
 			pstmt.setInt(1, boardId);
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
 				board = new BoardVO(
@@ -111,7 +112,7 @@ public class BoardDAO implements IBoardDAO {
 
 	@Override
 	public void updateBoard(int boardId, String title, String content) {
-		String sql = "UPDATE pr_board SET title = ?, content = ? WHERE board_id = ?";
+		String sql = "UPDATE PR_BOARD SET title = ?, content = ? WHERE board_id = ?";
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql)){
 			pstmt.setString(1, title);
@@ -127,7 +128,7 @@ public class BoardDAO implements IBoardDAO {
 
 	@Override
 	public void deleteBoard(int boardId) {
-		String sql = "DELETE FROM pr_board WHERE board_id = ?";
+		String sql = "DELETE FROM PR_BOARD WHERE board_id = ?";
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql)){
 			pstmt.setInt(1, boardId);
