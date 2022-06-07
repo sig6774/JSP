@@ -78,6 +78,7 @@ public class UserDAO implements IUserDAO {
 			pstmt.setString(6, newuser.getAddress());
 			
 			a = pstmt.executeUpdate();
+			System.out.println(a);
 			// excute update는 insert, update, delete에 반영된 건수를 리턴 
 			if (a > 0) {
 				System.out.println("등록완료");
@@ -118,46 +119,50 @@ public class UserDAO implements IUserDAO {
 		return flag;
 	}
 	
-	@Override
-	public boolean updatePw(String userId, String newPw) {
-		
-		String sql = "UPDATE PR_USER SET user_pw = ? WHERE user_id = ?";
-		int a = 0;
-		boolean flag = false;
-		try(Connection conn = ds.getConnection(); 
-				PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, newPw);
-			pstmt.setString(2, userId);
-			a = pstmt.executeUpdate();
-			
-			if (a>0) {
-				System.out.println("비밀번호 업데이트 완료");
-				flag = true;
-			}
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return flag;
-	}
+//	@Override
+//	public boolean updatePw(String userId, String newPw) {
+//		
+//		String sql = "UPDATE PR_USER SET user_pw = ? WHERE user_id = ?";
+//		int a = 0;
+//		boolean flag = false;
+//		try(Connection conn = ds.getConnection(); 
+//				PreparedStatement pstmt = conn.prepareStatement(sql)){
+//			pstmt.setString(1, newPw);
+//			pstmt.setString(2, userId);
+//			a = pstmt.executeUpdate();
+//			
+//			if (a>0) {
+//				System.out.println("비밀번호 업데이트 완료");
+//				flag = true;
+//			}
+//			
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return flag;
+//	}
 
+	// 이거 안됨 
+	// 왜 안되는지 모르겠음 ...ㅠㅠㅠ
 	@Override
 	public boolean updateUser(UserVO upuser) {
-		String sql = "UPDATE PR_USER SET name = ?, telephone = ?, email = ?, address = ? WHERE user_id = ?";
+		String sql = "UPDATE pr_user set user_pw = ?, name = ?, telephone = ?, email = ?, address = ? WHERE user_id = ?";
 		int a = 0;
 		boolean flag = false;
 		
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, upuser.getName());
-			pstmt.setString(2, upuser.getNumber());
-			pstmt.setString(3, upuser.getEmail());
-			pstmt.setString(4, upuser.getAddress());
-			pstmt.setString(5, upuser.getUserId());
+			pstmt.setString(1, upuser.getUserPw());
+			pstmt.setString(2, upuser.getName());
+			pstmt.setString(3, upuser.getNumber());
+			pstmt.setString(4, upuser.getEmail());
+			pstmt.setString(5, upuser.getAddress());
+			pstmt.setString(6, upuser.getUserId());
 			
 			a = pstmt.executeUpdate();
+			System.out.println(a);
 			
 			if (a > 0) {
 				System.out.println("정보 업데이트 완료");
@@ -171,17 +176,17 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public boolean deleteUser(String userId) {
-		String sql = "DELETE FROM PR_USER WHERE user_id = ?";
+	public boolean deleteUser(String userPw) {
+		String sql = "DELETE FROM pr_user WHERE user_pw = ?";
 		boolean flag = false;
 		int a = 0;
 		
 		try(Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(sql)){
-			pstmt.setString(1, userId);
+			pstmt.setString(1, userPw);
 			a = pstmt.executeUpdate();
 			
-			if (a >0 ) {
+			if (a > 0) {
 				System.out.println("삭제 완료");
 				flag = true;
 			}
@@ -190,6 +195,34 @@ public class UserDAO implements IUserDAO {
 			e.printStackTrace();
 		}
 		return flag;
+	}
+	
+	@Override
+	public UserVO userInfo(String userId, String userPw) {
+		String sql = "SELECT * FROM pr_user WHERE user_id = ? and user_pw = ?";
+		UserVO user = null;
+		try (Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+			ResultSet rs = null;
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPw);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				user = new UserVO(
+						rs.getString("user_id"),
+						rs.getString("user_pw"),
+						rs.getString("name"),
+						rs.getString("telephone"),
+						rs.getString("email"),
+						rs.getString("address")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }

@@ -12,12 +12,15 @@ public interface IUserDAO {
 	boolean loginUser(String userId, String userPw);
 	
 	// 유저 pw 수정 
-	boolean updatePw(String userId, String newPw);
+//	boolean updatePw(String userId, String newPw);
 	
 	// 유저 다른 정보 수정 
 	boolean updateUser(UserVO upuser);
 	
 	// 유저 삭제 
-	boolean deleteUser(String userId);
+	boolean deleteUser(String userPw);
+	
+	// 유저 정보 가져오기 
+	UserVO userInfo(String userId, String userPw);
 	
 }

@@ -24,7 +24,7 @@ body {
 <body>
 
 	<%--  <%@ include file="include/header.jsp" %>--%>
-<jsp:include page="include/header.jsp"/> 
+	<%@ include file="include/header.jsp" %>
 	
 
 	<section>

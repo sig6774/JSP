@@ -38,36 +38,9 @@
 
 <body>
 
-	<nav class="navbar navbar-default" id="nav">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="##">MIN and PARK</a>
-		</div>
+	<jsp:include page="../include/header.jsp" /> 
 
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="##" style="margin-right: 10px;">메인</a></li>
-				<li class="active"><a href="##">게시판</a></li>
-			</ul>
 
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">접속하기<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
-					</ul></li>
-			</ul>
-
-		</div>
-	</nav>
 
 	<section>
 		<div class="container">
@@ -80,11 +53,12 @@
 					<form action="user_join_con.jsp" method="post">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
-								class="form-control" id="id" name = "ID" placeholder="아이디를 (영문포함 4~12자 이상)">
+								class="form-control" id="id" name="ID"
+								placeholder="아이디를 (영문포함 4~12자 이상)">
 						</div>
 						<div class="form-group">
 							<label for="password">비밀번호</label> <input type="password"
-								class="form-control" id="password" name = "PW"
+								class="form-control" id="password" name="PW"
 								placeholder="비밀번호 (영 대/소문자, 숫자, 특수문자 3종류 이상 조합 8자 이상)">
 						</div>
 						<div class="form-group">
@@ -93,34 +67,36 @@
 								placeholder="비밀번호를 확인해주세요.">
 						</div>
 						<div class="form-group">
-							<label for="name">이름</label> <input type="text" name = "NAME"
+							<label for="name">이름</label> <input type="text" name="NAME"
 								class="form-control" id="name" placeholder="이름을 입력하세요.">
 						</div>
 						<!--input2탭의 input-addon을 가져온다 -->
 						<div class="form-group">
 							<label for="hp">휴대폰번호</label><br> <input
-								class="form-control sel" placeholder="010" name = "first"> - <input
-								class="form-control sel" placeholder="xxxx" name = "second"> - <input
-								class="form-control sel" placeholder="xxxx" name = "third">
+								class="form-control sel" placeholder="010" name="first">
+							- <input class="form-control sel" placeholder="xxxx"
+								name="second"> - <input class="form-control sel"
+								placeholder="xxxx" name="third">
 
 						</div>
 						<div class="form-group">
 							<label for="hp">이메일</label><br> <input
-								class="form-control sel" name = "email1">@ <select name = "email2"
-								class="form-control sel">
-								<option value = "naver">naver.com</option>
-								<option value = "google">gmail.com</option>
-								<option value = "daum">daum.net</option>
+								class="form-control sel" name="email1">@ <select
+								name="email2" class="form-control sel">
+								<option value="naver">naver.com</option>
+								<option value="google">gmail.com</option>
+								<option value="daum">daum.net</option>
 							</select>
 						</div>
 
 						<div class="form-group">
 							<label for="addr-num">주소</label> <input type="text"
-								class="form-control" id="addr-basic" placeholder="기본주소" name = "ADDR1">
+								class="form-control" id="addr-basic" placeholder="기본주소"
+								name="ADDR1">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" id="addr-detail" name = "ADDR2"
-								placeholder="상세주소">
+							<input type="text" class="form-control" id="addr-detail"
+								name="ADDR2" placeholder="상세주소">
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-lg btn-success btn-block">회원가입</button>
@@ -135,6 +111,9 @@
 
 
 	</section>
+
+	<jsp:include page="../include/footer.jsp" /> 
+
 
 
 
