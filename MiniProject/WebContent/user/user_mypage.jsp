@@ -32,7 +32,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 
 </head>
 <body>
-	<jsp:include page="../include/header.jsp" /> 
+	<%@ include file="/include/header.jsp"%>
 
 
 	<section>
@@ -54,12 +54,13 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 
 					</div>
 					<div class="delete-hidden">
-						<form action="user_delete_con.jsp" method="post">
+						<form action="/MiniProject/delete.User" method="post">
 							<input type="password" class="form-control" name="CHECKPW"
 								placeholder="비밀번호를 입력하세요">
 							<button type="submit" class="btn btn-primary"
-								onclick="location.href = 'user_delete_con.jsp'">확인</button>
+								>확인</button>
 								<!-- 지금 서버 문제로 update, delete 전부 안됨  -->
+								<!-- onclick="location.href = 'user_delete_con.jsp' -->
 						</form>
 					</div>
 
@@ -105,7 +106,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 
 	</section>
 
-	<jsp:include page="../include/footer.jsp" /> 
+	<%@ include file="/include/footer.jsp"%>
 
 
 
@@ -122,8 +123,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 			}
 		}
 	</script>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+
 </body>
 </html>
 <%}%>

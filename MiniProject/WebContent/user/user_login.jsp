@@ -30,7 +30,7 @@
 </head>
 
 <body>
-	<jsp:include page="../include/header.jsp" /> 
+	<%@ include file="/include/header.jsp"%>
 
 
 	<section>
@@ -42,7 +42,7 @@
 					</h2>
 
 
-					<form action="user_login_con.jsp" method="post">
+					<form action="/MiniProject/login.User" method="post">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" id="id" name="ID" placeholder="아이디">
@@ -54,13 +54,14 @@
 
 						<div class="form-group">
 							<button type="button" class="btn btn-lg btn-success btn-block"
-							onclick="location.href='user_join.jsp'">회원가입</button>
+							>회원가입</button>
+							<!-- onclick="location.href='user_join.jsp'" -->
 						</div>
 
 						<div class="form-group">
 							<button type="submit"
-								onclick="location.href='user_login_con.jsp'"
 								class="btn btn-lg btn-info btn-block">로그인</button>
+								<!-- onclick="location.href='user_login_con.jsp'" -->
 						</div>
 					</form>
 				</div>
@@ -69,7 +70,7 @@
 
 
 	</section>
-	<jsp:include page="../include/footer.jsp" /> 
+	<%@ include file="/include/footer.jsp"%>
 
 
 

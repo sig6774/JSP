@@ -10,39 +10,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.pr.board.service.IBoardService;
+import kr.co.pr.user.service.DeleteService;
+import kr.co.pr.user.service.IUserService;
+import kr.co.pr.user.service.JoinService;
+import kr.co.pr.user.service.LoginService;
 
 
 @WebServlet("*.User")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private RequestDispatcher dp;
-	private IBoardService sv;
+	private IUserService sv;
 	
     public UserController() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-	public void init(ServletConfig config) throws ServletException {
-		System.out.println("서블릿 객체 생성 ");
-	}
-
-	public void destroy() {
-		System.out.println("서블릿 객체 사라짐");
-	}
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doRequest(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		doRequest(request, response);
 	}
 	
 	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,8 +49,46 @@ public class UserController extends HttpServlet {
 			
 			switch(uri) {
 			
-			case "":
+			case "join_move":
+				System.out.println("회원가입 페이지 이동 요청 들어옴");
+				response.sendRedirect("user/user_join.jsp");
+				break;
 				
+			// 회원가입 요청
+			case "join":
+				System.out.println("회원가입 요청 들어옴");
+				sv = new JoinService();
+				sv.execute(request, response);
+				break;
+			
+		
+			case "move_loginPage":
+				System.out.println("로그인 페이지 이동 요청 들어옴");
+				response.sendRedirect("user/user_login.jsp");
+				break;
+			
+			// 로그인 요청
+			case "login":
+				System.out.println("로그인 요청 들어옴");
+				sv = new LoginService();
+				sv.execute(request, response);
+				break;
+				
+			// mypage 이동 요청 
+			case "mypage":
+				System.out.println("마이페이지 이동 요청 들어옴");
+				response.sendRedirect("user/user_mypage.jsp");
+				break;
+				
+			// delete 요청 
+			case "delete":
+				System.out.println("회원 삭제 요청 들어옴");
+				sv = new DeleteService();
+				sv.execute(request, response);
+				break;
+				
+				
+			
 					
 	}
 	}

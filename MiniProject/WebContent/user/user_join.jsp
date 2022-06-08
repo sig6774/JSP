@@ -38,7 +38,7 @@
 
 <body>
 
-	<jsp:include page="../include/header.jsp" /> 
+	<%@ include file="/include/header.jsp"%>
 
 
 
@@ -50,7 +50,7 @@
 						회원가입<small>(가운데정렬)</small>
 					</h2>
 
-					<form action="user_join_con.jsp" method="post">
+					<form action="/MiniProject/join.User" method="post">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" id="id" name="ID"
@@ -112,7 +112,7 @@
 
 	</section>
 
-	<jsp:include page="../include/footer.jsp" /> 
+	<%@ include file="/include/footer.jsp"%>
 
 
 

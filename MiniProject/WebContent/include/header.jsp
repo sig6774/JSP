@@ -20,21 +20,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.jsp">MIN and PARK</a>
+            <a class="navbar-brand" href="/MiniProject/index.jsp">MIN and PARK</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="../index.jsp" style="margin-right: 10px;">메인</a></li>
-                <li><a href="board/board_list.jsp">게시판</a></li>
+                <li class="active"><a href="/MiniProject/index.jsp" style="margin-right: 10px;">메인</a></li>
+                <li><a href="Boardlist.Board">게시판</a></li>
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
+                        <li><a href="move_loginPage.User">로그인</a></li>
+                        <li><a href="join_move.User">회원가입</a></li>
                     </ul>
                 </li>
             </ul>

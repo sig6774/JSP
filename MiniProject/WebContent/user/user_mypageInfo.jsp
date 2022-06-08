@@ -27,7 +27,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 
 </head>
 <body>
-	<jsp:include page="../include/header.jsp" /> 
+	<%@ include file="/include/footer.jsp"%>
 
 
 	<section>
@@ -104,7 +104,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 		</div>
 
 	</section>
-	<jsp:include page="../include/footer.jsp" /> 
+	<%@ include file="/include/footer.jsp"%>
 
 
 	<footer>
@@ -115,8 +115,7 @@ UserVO user = (UserVO) session.getAttribute("userInfo");
 			</div>
 		</div>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
+
 </body>
 </html>
 <%}%>

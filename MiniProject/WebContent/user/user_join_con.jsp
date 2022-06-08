@@ -10,7 +10,7 @@
 		String pw = request.getParameter("PW");
 		String name = request.getParameter("NAME");
 		
-		// telephone은 일단 문자로 받아서 문자열로 합친 뒤 int로 바꿔주기 
+		// telephone은 일단 문자로 받아서 문자열로 합침
 		String firstNum = request.getParameter("first");
 		String secondNum = request.getParameter("second");
 		String thirdNum = request.getParameter("third");
